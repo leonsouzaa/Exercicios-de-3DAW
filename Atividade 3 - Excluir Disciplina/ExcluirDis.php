@@ -1,57 +1,56 @@
 <?php
-$msg = ""; 
+    $sigla = "";
+    $msg = "";
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST')  {
-    $codigo_excluir = $_POST["codigo"];
-    $arquivo = "disciplinas.txt";
-    $excluido = false;
+    $sigla = $_POST["sigla"];
+    $msg = "";
+    
+    $arqDisc = fopen("disciplinas.txt","r") or die("erro ao abrir arquivo");
+    $arqDiscNovo = fopen("disciplinas_novo.txt","w") or die("erro ao criar arquivo");
+    
+    $linha = fgets($arqDisc);
+    fwrite($arqDiscNovo, $linha);
 
-    if (file_exists($arquivo)) {
+    while(!feof($arqDisc)) {
+        $linha = fgets($arqDisc);
         
-        $linhas = file($arquivo);
-        
-        $arqDisciplina = fopen($arquivo, "w") or die("Erro ao abrir arquivo");
-        
-        foreach ($linhas as $linha) {
+        if ($linha) {
+            $colunaDados = explode(";", $linha);
             
-            $dados = explode(";", $linha);
-            
-            if (trim($linha) == "nome;codigo" || (isset($dados[1]) && trim($dados[1]) != $codigo_excluir)) {
-                fwrite($arqDisciplina, $linha);
-            } else {
-                
-                $excluido = true;
+            if (trim($colunaDados[1]) != $sigla) {
+                fwrite($arqDiscNovo, $linha);
             }
         }
-        
-        fclose($arqDisciplina);
-        
-        if ($excluido) {
-            $msg = "Disciplina excluída com sucesso!!!";
-        } else {
-            $msg = "Disciplina não encontrada.";
-        }
-    } else {
-        $msg = "O arquivo de disciplinas ainda não existe.";
-    }
+     }
+    fclose($arqDisc);
+    fclose($arqDiscNovo);
+    
+    rename("disciplinas_novo.txt", "disciplinas.txt");
+    
+    $msg = "Deu tudo certo!!!";
 }
 ?>
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Excluir Disciplina</title>
 </head>
 <body>
-    <h1>Excluir Disciplina</h1>
-    
-     <form action="ExcluirDisciplina.php" method="POST">
-        Código da Disciplina para excluir: <input type="text" name="codigo" required>
-        <br><br>
-        <input type="submit" value="Excluir Disciplina">
-    </form>
-    
-    <p><strong><?php echo $msg; ?></strong></p>
-    <br>
+<h1>Excluir Disciplina</h1>
+<br>
+<ul>
+    <li><a href="ex03_IncluirDisciplina.php">Incluir Disciplina</a></li>
+    <li><a href="ex04_listarTodasDisciplinas.php">Listar Disciplina</a></li>
+    <li><a href="ex05_pedeQuemAlterar.php">Alterar Disciplina</a></li>
+</ul>
+
+<form action="ex06_ExcluirDisciplina.php" method="POST">
+    Sigla da disciplina para excluir: <input type="text" name="sigla">
+    <br><br>
+    <input type="submit" value="Excluir Disciplina">
+</form>
+
+<p><?php echo $msg ?></p>
+<br>
 </body>
 </html>
