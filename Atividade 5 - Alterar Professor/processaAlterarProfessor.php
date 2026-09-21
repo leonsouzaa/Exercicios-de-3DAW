@@ -2,10 +2,10 @@
     $msg = "";
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST')  {
-    $cpf = $_POST["cpf"];
+    $matricula = $_POST["matricula"];
     $nome = $_POST["nome"];
-    $email = $_POST["email"];
-    $titulacao = $_POST["titulacao"];
+    $cpf = $_POST["cpf"];
+    $endereco = $_POST["endereco"];
     $msg = "";
     
     if (file_exists("professores.txt")) {
@@ -21,8 +21,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')  {
             if (trim($linha) != "") {
                 $colunaDados = explode(";", $linha);
                 
-                if (isset($colunaDados[2]) && trim($colunaDados[2]) == $cpf) {
-                    $novaLinha = $nome . ";" . $email . ";" . $cpf . ";" . $titulacao . "\n";
+                if (isset($colunaDados[0]) && trim($colunaDados[0]) == $matricula) {
+                    $novaLinha = $matricula . ";" . $nome . ";" . $cpf . ";" . $endereco . "\n";
                     fwrite($arqProfNovo, $novaLinha);
                 } else {
                     fwrite($arqProfNovo, $linha);
