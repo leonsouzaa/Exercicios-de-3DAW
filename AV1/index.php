@@ -5,7 +5,7 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <title>Water Falls - Sistema de Treinamento</title>
+    <title>Sistema de Treinamento</title>
     <style>
         body { font-family: Arial, sans-serif; margin: 40px; background-color: #f4f4f9; color: #333; }
         .container { max-width: 600px; background: white; padding: 30px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
