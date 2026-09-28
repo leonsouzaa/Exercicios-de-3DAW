@@ -18,7 +18,7 @@
 </head>
 <body>
     <div class="container">
-        <h1>Water Falls</h1>
+        <h1>Sistema de Cadastro (Perguntas)</h1>
         <p>Painel de Controle do Módulo de Treinamento</p>
         <ul>
             <li><a href="usuarios.php">Gerenciar Usuários</a></li>
