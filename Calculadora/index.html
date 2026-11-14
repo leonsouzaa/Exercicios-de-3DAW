@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="calculadora">
+        <h1>Calculadora</h1>
+
+        <form id="form-calculo">
+            <div class="campos">
+                <div class="numeros">
+                    <input type="number" id="numero1" step="any" placeholder="Primeiro número" required>
+                    <input type="number" id="numero2" step="any" placeholder="Segundo número" required>
+                </div>
+
+                <select id="operacao" title="Operação">
+                    <option value="soma" title="Soma">+</option>
+                    <option value="subtracao" title="Subtração">−</option>
+                    <option value="multiplicacao" title="Multiplicação">×</option>
+                    <option value="divisao" title="Divisão">÷</option>
+                    <option value="potencia" title="Potência">^</option>
+                    <option value="resto" title="Resto">%</option>
+                </select>
+            </div>
+
+            <button type="submit">Calcular</button>
+        </form>
+
+        <div id="resultado" class="resultado" aria-live="polite"></div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
