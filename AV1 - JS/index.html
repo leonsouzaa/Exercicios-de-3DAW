@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema AV1</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="container">
+        <h1>Sistema AV1</h1>
+
+        <nav class="abas">
+            <button type="button" class="ativa" data-aba="perguntas">Perguntas</button>
+            <button type="button" data-aba="usuarios">Usuários</button>
+        </nav>
+
+        <p id="mensagem" class="mensagem" hidden></p>
+
+        <!-- ===================== PERGUNTAS ===================== -->
+        <section id="aba-perguntas">
+            <div class="barra">
+                <button type="button" id="btn-nova-multipla">+ Múltipla escolha</button>
+                <button type="button" id="btn-nova-texto">+ Dissertativa</button>
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width: 8%;">Nº</th>
+                        <th>Enunciado</th>
+                        <th style="width: 15%;">Tipo</th>
+                        <th style="width: 30%;">Ações</th>
+                    </tr>
+                </thead>
+                <tbody id="tabela-perguntas"></tbody>
+            </table>
+        </section>
+
+        <!-- ===================== USUÁRIOS ===================== -->
+        <section id="aba-usuarios" hidden>
+            <form id="form-usuario">
+                <h2 id="titulo-form-usuario">Novo usuário</h2>
+                <input type="hidden" id="usuario-id">
+
+                <label for="usuario-nome">Nome</label>
+                <input type="text" id="usuario-nome" required>
+
+                <label for="usuario-email">E-mail</label>
+                <input type="email" id="usuario-email" required>
+
+                <label for="usuario-cargo">Cargo</label>
+                <select id="usuario-cargo">
+                    <option value="Gestor">Gestor</option>
+                    <option value="Administrador">Administrador</option>
+                </select>
+
+                <div class="barra">
+                    <button type="submit" class="verde">Salvar</button>
+                    <button type="button" id="btn-cancelar-usuario" class="cinza" hidden>Cancelar edição</button>
+                </div>
+            </form>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>E-mail</th>
+                        <th>Cargo</th>
+                        <th style="width: 30%;">Ações</th>
+                    </tr>
+                </thead>
+                <tbody id="tabela-usuarios"></tbody>
+            </table>
+        </section>
+    </main>
+
+    <!-- Janela: criar / alterar pergunta -->
+    <dialog id="modal-pergunta">
+        <form id="form-pergunta">
+            <h2 id="titulo-form-pergunta"></h2>
+            <input type="hidden" id="pergunta-id">
+            <input type="hidden" id="pergunta-tipo">
+
+            <label for="pergunta-enunciado">Enunciado</label>
+            <textarea id="pergunta-enunciado" rows="3" required></textarea>
+
+            <div id="campos-multipla">
+                <label>Alternativas (marque a correta)</label>
+                <div class="alt"><input type="text" class="alt-texto" placeholder="Opção 1"><label><input type="radio" name="correta" class="alt-correta"> Correta</label></div>
+                <div class="alt"><input type="text" class="alt-texto" placeholder="Opção 2"><label><input type="radio" name="correta" class="alt-correta"> Correta</label></div>
+                <div class="alt"><input type="text" class="alt-texto" placeholder="Opção 3"><label><input type="radio" name="correta" class="alt-correta"> Correta</label></div>
+                <div class="alt"><input type="text" class="alt-texto" placeholder="Opção 4"><label><input type="radio" name="correta" class="alt-correta"> Correta</label></div>
+            </div>
+
+            <div id="campos-texto">
+                <label for="novo-gabarito">Respostas aceitas (gabarito)</label>
+                <div class="linha">
+                    <input type="text" id="novo-gabarito" placeholder="Ex: Pedro Álvares Cabral">
+                    <button type="button" id="btn-add-gabarito">Adicionar</button>
+                </div>
+                <ul id="lista-gabaritos"></ul>
+            </div>
+
+            <div class="barra">
+                <button type="submit" class="verde">Salvar</button>
+                <button type="button" class="cinza" id="btn-fechar-pergunta">Cancelar</button>
+            </div>
+        </form>
+    </dialog>
+
+    <!-- Janela: ver uma pergunta -->
+    <dialog id="modal-ver">
+        <h2 id="ver-titulo"></h2>
+        <p><strong>Enunciado:</strong></p>
+        <p id="ver-enunciado" class="caixa"></p>
+        <p><strong id="ver-rotulo"></strong></p>
+        <ul id="ver-respostas" class="caixa"></ul>
+        <div class="barra">
+            <button type="button" class="cinza" id="btn-fechar-ver">Fechar</button>
+        </div>
+    </dialog>
+
+    <script src="app.js"></script>
+</body>
+</html>
