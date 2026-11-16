@@ -103,7 +103,6 @@ async function carregarPerguntas() {
     });
 }
 
-/* ---- Listar uma pergunta ---- */
 async function verPergunta(id) {
     const { pergunta } = await requisitar(`${API.perguntas}?id=${encodeURIComponent(id)}`);
     const lista = document.getElementById('ver-respostas');
@@ -125,7 +124,6 @@ async function verPergunta(id) {
     modalVer.showModal();
 }
 
-/* ---- Formulário de criar / alterar ---- */
 function abrirFormPergunta(tipo, pergunta = null) {
     document.getElementById('form-pergunta').reset();
     document.getElementById('pergunta-id').value = pergunta ? pergunta.id : '';
@@ -192,7 +190,6 @@ document.getElementById('btn-nova-texto').addEventListener('click', () => abrirF
 document.getElementById('btn-fechar-pergunta').addEventListener('click', () => modalPergunta.close());
 document.getElementById('btn-fechar-ver').addEventListener('click', () => modalVer.close());
 
-/* ---- Salvar (criar = POST, alterar = PUT) ---- */
 document.getElementById('form-pergunta').addEventListener('submit', (evento) => {
     evento.preventDefault();
 
@@ -222,15 +219,12 @@ document.getElementById('form-pergunta').addEventListener('submit', (evento) => 
     });
 });
 
-/* ---- Excluir ---- */
 async function excluirPergunta(id) {
     if (!confirm('Tem certeza que deseja excluir esta pergunta e suas respostas?')) return;
     const json = await requisitar(`${API.perguntas}?id=${encodeURIComponent(id)}`, 'DELETE');
     mostrarMensagem(json.mensagem);
     await carregarPerguntas();
 }
-
-/* =============================== USUÁRIOS =============================== */
 
 const tabelaUsuarios = document.getElementById('tabela-usuarios');
 const formUsuario = document.getElementById('form-usuario');
@@ -307,8 +301,6 @@ formUsuario.addEventListener('submit', (evento) => {
         await carregarUsuarios();
     });
 });
-
-/* ============================== INICIALIZAÇÃO ============================== */
 
 tentar(async () => {
     await carregarPerguntas();
