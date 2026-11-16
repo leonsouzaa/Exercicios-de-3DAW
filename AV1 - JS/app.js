@@ -3,7 +3,6 @@ const API = {
     usuarios: 'api/usuarios.php'
 };
 
-// Envia a requisição ao PHP e devolve o JSON. Lança erro com a mensagem do servidor.
 async function requisitar(url, metodo = 'GET', corpo = null) {
     const opcoes = { method: metodo, headers: {} };
     if (corpo !== null) {
@@ -55,7 +54,6 @@ function mostrarMensagem(texto, ehErro = false) {
     campoMensagem.hidden = false;
 }
 
-// Executa uma ação e mostra o erro do servidor (se houver)
 async function tentar(acao) {
     try {
         await acao();
@@ -63,8 +61,6 @@ async function tentar(acao) {
         mostrarMensagem(e.message, true);
     }
 }
-
-/* ================================ ABAS ================================ */
 
 document.querySelectorAll('.abas button').forEach((b) => {
     b.addEventListener('click', () => {
@@ -74,8 +70,6 @@ document.querySelectorAll('.abas button').forEach((b) => {
         campoMensagem.hidden = true;
     });
 });
-
-/* ============================== PERGUNTAS ============================== */
 
 const tabelaPerguntas = document.getElementById('tabela-perguntas');
 const modalPergunta = document.getElementById('modal-pergunta');
