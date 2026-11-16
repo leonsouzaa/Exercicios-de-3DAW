@@ -1,6 +1,3 @@
-// O JavaScript só envia as requisições para o PHP, recebe o JSON e mostra na tela.
-// Regras de negócio e validações ficam todas no PHP (pasta api/).
-
 const API = {
     perguntas: 'api/perguntas.php',
     usuarios: 'api/usuarios.php'
