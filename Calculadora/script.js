@@ -1,5 +1,4 @@
-// O JavaScript só envia os dados, recebe o resultado e mostra na tela.
-// Nenhum cálculo é feito aqui: tudo é responsabilidade do PHP.
+
 
 const form = document.getElementById('form-calculo');
 const campoResultado = document.getElementById('resultado');
