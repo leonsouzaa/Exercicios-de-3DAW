@@ -1,11 +1,4 @@
 <?php
-// API do CRUD de usuários. Sempre responde JSON.
-//
-//   GET    usuarios.php           -> lista todos os usuários
-//   GET    usuarios.php?id=XXX    -> lista um usuário
-//   POST   usuarios.php           -> cria usuário (corpo JSON)
-//   PUT    usuarios.php?id=XXX    -> altera usuário (corpo JSON)
-//   DELETE usuarios.php?id=XXX    -> exclui usuário
 
 require_once __DIR__ . '/conexao.php';
 
