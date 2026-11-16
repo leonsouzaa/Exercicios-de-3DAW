@@ -3,8 +3,6 @@ const API = {
     usuarios: 'api/usuarios.php'
 };
 
-/* ============================ UTILIDADES ============================ */
-
 // Envia a requisição ao PHP e devolve o JSON. Lança erro com a mensagem do servidor.
 async function requisitar(url, metodo = 'GET', corpo = null) {
     const opcoes = { method: metodo, headers: {} };
