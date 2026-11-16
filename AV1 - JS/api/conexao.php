@@ -1,6 +1,4 @@
 <?php
-// Funções comuns da API: leitura/gravação nos arquivos txt e resposta em JSON.
-// Cada linha do .txt guarda um registro em formato JSON.
 
 const DIR_DADOS = __DIR__ . '/../dados/';
 
