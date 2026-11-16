@@ -1,11 +1,4 @@
 <?php
-// API de perguntas e respostas (múltipla escolha e texto). Sempre responde JSON.
-//
-//   GET    perguntas.php           -> lista todas as perguntas
-//   GET    perguntas.php?id=XXX    -> lista uma pergunta
-//   POST   perguntas.php           -> cria pergunta (corpo JSON)
-//   PUT    perguntas.php?id=XXX    -> altera pergunta (corpo JSON)
-//   DELETE perguntas.php?id=XXX    -> exclui pergunta e respostas
 
 require_once __DIR__ . '/conexao.php';
 
